@@ -1,18 +1,24 @@
 package com.quarks.ecommerce.inventory_service.entity;
 
 import jakarta.persistence.*;
+
 @Entity
 public class InventoryItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @Column(nullable = false, unique = true)
     private Long itemId;
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private int totalQuantity;
+    @Column(nullable = false)
     private int reservedQuantity;
     @Version
-    private Long version;
+    @Column(nullable = false)
+    private long version;
 
     public int getAvailableQuantity() {
         int availableQuantity = totalQuantity - reservedQuantity;

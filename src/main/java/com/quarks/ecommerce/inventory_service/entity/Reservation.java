@@ -10,13 +10,22 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private Long itemId;
+
+    @Column(nullable = false)
     private int quantity;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ReservationStatus reservationStatus;
+
+    @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @Column(nullable = false)
     private String reservedBy;
+    @Column(nullable = false, unique = true)
     private String reservationToken;
 
     public Long getId() {
